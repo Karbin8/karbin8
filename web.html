@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Background Remover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-4xl w-full">
+        <h1 class="text-3xl font-bold mb-6 text-center">Image Background Remover</h1>
+        <div class="flex flex-col md:flex-row md:space-x-8 space-y-8 md:space-y-0">
+            <div class="flex-1 bg-gray-700 rounded-md p-4 flex items-center justify-center relative min-h-[300px]">
+                <div id="originalPlaceholder" class="absolute text-center text-gray-400">
+                    <p class="text-lg">Upload an image to get started</p>
+                    <p>Supported formats: JPG, PNG</p>
+                </div>
+                <div id="originalImageContainer" class="max-h-full"></div>
+            </div>
+            <div class="flex-1 bg-gray-700 rounded-md p-4 flex items-center justify-center relative min-h-[300px]">
+                <div id="processedPlaceholder" class="absolute text-center text-gray-400">
+                    <p class="text-lg">Your processed image will appear here</p>
+                </div>
+                <div id="processedImageContainer" class="max-h-full"></div>
+            </div>
+        </div>
+        
+        <div class="mt-8 flex flex-col items-center space-y-4">
+            <input type="file" id="fileInput" accept="image/png, image/jpeg" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100">
+            <div class="flex space-x-4">
+                <button id="removeButton" disabled class="px-6 py-2 rounded-full font-semibold text-white transition-colors duration-200" 
+                    style="background-color: rgb(96 165 250);" disabled>
+                    Remove Background
+                </button>
+                <button id="downloadButton" disabled class="px-6 py-2 rounded-full font-semibold text-white transition-colors duration-200"
+                    style="background-color: rgb(248 113 113);" disabled>
+                    Download
+                </button>
+            </div>
+            <div id="loadingIndicator" class="hidden mt-4 text-blue-400">
+                <svg class="animate-spin h-6 w-6 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </div>
+            <div id="statusMessage" class="mt-2 text-center text-sm font-medium"></div>
+        </div>
+    </div>
+    <script src="web.js"></script>
+</body>
+</html>
